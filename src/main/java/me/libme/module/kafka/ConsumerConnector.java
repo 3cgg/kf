@@ -133,7 +133,7 @@ public class ConsumerConnector implements Serializable {
 		}
 		
 		public ConsumerRecords<K,V> poll(int timeout){
-			ConsumerRecords<K, V> records = consumer.poll(100);
+			ConsumerRecords<K, V> records = consumer.poll(timeout);
 			return records;
 		}
 		
