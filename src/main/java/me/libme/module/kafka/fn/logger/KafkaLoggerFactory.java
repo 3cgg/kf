@@ -13,6 +13,11 @@ public class KafkaLoggerFactory {
 
     private KafkaLoggerBuilder kafkaLoggerBuilder;
 
+
+    private KafkaLoggerFactory() {
+
+    }
+
     public static class KafkaLoggerBuilder{
 
         private KafkaProducerConfig kafkaProducerConfig;
@@ -57,7 +62,7 @@ public class KafkaLoggerFactory {
         kafkaLogger.clazz=clazz;
         kafkaLogger.className=clazz.getName();
         kafkaLogger.producer=new SimpleProducer(kafkaLoggerBuilder.producerExecutor);
-
+        kafkaLogger.kafkaLoggerTopicMatch=kafkaLoggerBuilder.kafkaLoggerTopicMatch;
         return kafkaLogger;
     }
 
@@ -66,6 +71,7 @@ public class KafkaLoggerFactory {
         KafkaLogger kafkaLogger=new KafkaLogger();
         kafkaLogger.className=clazzName;
         kafkaLogger.producer=new SimpleProducer(kafkaLoggerBuilder.producerExecutor);
+        kafkaLogger.kafkaLoggerTopicMatch=kafkaLoggerBuilder.kafkaLoggerTopicMatch;
         return kafkaLogger;
     }
 

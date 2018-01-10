@@ -18,18 +18,18 @@ import java.util.Optional;
  */
 public class ReadLogger2File {
 
-    private static final String TOPIC_PARTITION="--topicPartition";
+    public static final String TOPIC_PARTITION="--topicPartition";
 
-    private static final String FILE="--file";
+    public static final String FILE="--file";
 
     private String filePath;
 
     private KafkaConsumerConfig kafkaConsumerConfig;
 
-    private String[] args;
+    private CliParams cliParams;
 
-    public ReadLogger2File args(String[] args) {
-        this.args = args;
+    public ReadLogger2File cliParams(CliParams cliParams) {
+        this.cliParams = cliParams;
         return this;
     }
 
@@ -44,8 +44,6 @@ public class ReadLogger2File {
     }
 
     public void start() throws Exception{
-
-        CliParams cliParams=new CliParams(args);
 
         if(JStringUtils.isNullOrEmpty(filePath)){
             filePath=Optional.of(cliParams.getString(FILE)).orElse("log-file.log");
@@ -67,12 +65,14 @@ public class ReadLogger2File {
                         .addPartition(topic,pts).connect();
 
         try(BufferedWriter bufferedWriter=new BufferedWriter(new FileWriter(filePath,true))){
-            ConsumerRecords<String, Object> consumerRecords = consumer.poll(3*1000);
-            for (ConsumerRecord<String, Object> consumerRecord : consumerRecords) {
-                String record =String.valueOf(consumerRecord.value());
-                bufferedWriter.write(record);
+            while (true){
+                ConsumerRecords<String, Object> consumerRecords = consumer.poll(3*1000);
+                for (ConsumerRecord<String, Object> consumerRecord : consumerRecords) {
+                    String record =String.valueOf(consumerRecord.value());
+                    bufferedWriter.write(record+"\n");
+                }
+                bufferedWriter.flush();
             }
-            bufferedWriter.flush();
         }
 
     }
