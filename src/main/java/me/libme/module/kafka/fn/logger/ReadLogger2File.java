@@ -18,9 +18,9 @@ import java.util.Optional;
  */
 public class ReadLogger2File {
 
-    public static final String TOPIC_PARTITION="--kf.topicPartition";
+    public static final String TOPIC_PARTITION="--kf.readLogger2file.topicPartition";
 
-    public static final String FILE="--kf.file";
+    public static final String FILE="--kf.readLogger2file.file";
 
     private String filePath;
 
