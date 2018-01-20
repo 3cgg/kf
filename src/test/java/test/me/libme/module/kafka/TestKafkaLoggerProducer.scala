@@ -13,7 +13,7 @@ object TestKafkaLoggerProducer {
 
     val conf=KafkaProducerConfig.`def`();
 
-    conf.put("bootstrap.servers","192.168.1.109:9092")
+    conf.put("bootstrap.servers","one.3cgg.rec:9092")
     conf.put("value.serializer","org.apache.kafka.common.serialization.StringSerializer")
 
     val kafkaConfig=KafkaProducerConfig.build(conf)
