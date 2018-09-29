@@ -14,14 +14,14 @@ object TestReadLogger2File {
 
         val conf=KafkaConsumerConfig.`def`();
 
-        conf.put("bootstrap.servers","192.168.1.109:9092")
+        conf.put("bootstrap.servers","one.3cgg.rec:9092")
         conf.put("value.deserializer","org.apache.kafka.common.serialization.StringDeserializer")
 
         val kafkaConfig=KafkaConsumerConfig.build(conf)
 
         val cliParams=new CliParams(args)
           .append(ReadLogger2File.TOPIC_PARTITION,"__debug__::0")
-          .append(ReadLogger2File.FILE,"D:\\java_\\rec_system\\data\\log.log")
+          .append(ReadLogger2File.FILE,"D:\\log.log")
 
 
         new ReadLogger2File()

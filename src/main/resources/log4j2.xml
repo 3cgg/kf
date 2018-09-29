@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="debug" strict="true" name="log4j2" packages="me.libme">
-    <Properties>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
 
-    </Properties>
-    <Appenders>
-        <Appender type="Console" name="appConsole">
-            <Layout type="PatternLayout" pattern="%d %p  %c [%t] %m %n"/>
-        </Appender>
+     http://www.apache.org/licenses/LICENSE-2.0
 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
 
-    </Appenders>
+<configuration monitorInterval="60">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+     <PatternLayout pattern="%-4r [%t] %-5p %c{1.} - %msg%n"/>
+    </Console>
+  </Appenders>
+  <Loggers>
+    <Logger name="org.apache.zookeeper" level="WARN"/>
+    <Root level="debug">
+      <AppenderRef ref="Console"/>
+    </Root>
+  </Loggers>
+</configuration>
 
-    <Loggers>
-        <Logger name="test" level="DEBUG" additivity="false">
-            <AppenderRef ref="appConsole"/>
-        </Logger>
-        <Logger name="me.libme" level="DEBUG" additivity="false">
-            <AppenderRef ref="appConsole"/>
-        </Logger>
-        <Logger name="org" level="DEBUG" additivity="false">
-            <AppenderRef ref="appConsole"/>
-        </Logger>
-
-        <!-- 根logger的设置-->
-        <root>
-            <level value ="DEBUG"/>
-            <appender-ref ref="appConsole"/>
-        </root>
-
-    </Loggers>
-
-</Configuration>
