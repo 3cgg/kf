@@ -76,7 +76,20 @@ public class KafkaProducerConfig extends KafkaConfig{
 		conf.put("value.serializer", "org.apache.kafka.common.serialization.ByteArraySerializer");
 		return conf;
 	}
-	
+
+
+	public Map<String, Object> toMap(){
+		Map<String, Object> conf=new HashMap<>();
+		conf.put("acks", getAcks());
+		conf.put("batch.size", getBatchSize());
+		conf.put("buffer.memory", getBufferMemory());
+		conf.put("linger.ms", getLingerMs());
+		conf.put("retries", getRetries());
+		conf.put("key.serializer", getKeySerializer());
+		conf.put("value.serializer", getValueSerializer());
+		return conf;
+	}
+
 
 	/**
 	 * @return the acks

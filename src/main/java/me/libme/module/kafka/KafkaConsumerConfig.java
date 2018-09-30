@@ -74,6 +74,20 @@ public class KafkaConsumerConfig extends KafkaConfig{
 		return conf;
 	}
 
+
+	public Map<String, Object> toMap(){
+		Map<String, Object> conf=new HashMap<>();
+		conf.put("auto.commit.interval.ms", getAutoCommitIntervalMs());
+		conf.put("enable.auto.commit", getEnableAutoCommit());
+		conf.put("group.id", getGroupId());
+		conf.put("key.deserializer", getKeyDeserializer());
+		conf.put("value.deserializer", getValueDeserializer());
+		conf.put("request.timeout.ms", getRequestTimeoutMs());
+		conf.put("session.timeout.ms", getSessionTimeoutMs());
+		return conf;
+	}
+
+
 	/**
 	 * @return the sessionTimeoutMs
 	 */
