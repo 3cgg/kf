@@ -25,10 +25,10 @@ public class YamlProducerConfig implements KafkaProducerConfigFinder {
     public KafkaProducerConfig find() {
         Map<String,Object> config= KafkaProducerConfig.def();
 
-        Map map= (Map) yamlMapConfig.getObject("cpp.zk.kafka.properties",new HashMap<>());
+        Map map= (Map) yamlMapConfig.getObject("cpp.kafka.properties",new HashMap<>());
         config.putAll(map);
 
-        Map producerMap= (Map) yamlMapConfig.getObject("cpp.zk.kafka.producer",new HashMap<>());
+        Map producerMap= (Map) yamlMapConfig.getObject("cpp.kafka.producer",new HashMap<>());
         config.putAll(producerMap);
         return KafkaProducerConfig.build(config);
     }

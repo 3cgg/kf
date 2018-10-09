@@ -26,10 +26,10 @@ public class YamlConsumerConfig implements KafkaConsumerConfigFinder {
     public KafkaConsumerConfig find() {
         Map<String,Object> config= KafkaProducerConfig.def();
 
-        Map map= (Map) yamlMapConfig.getObject("cpp.zk.kafka.properties",new HashMap<>());
+        Map map= (Map) yamlMapConfig.getObject("cpp.kafka.properties",new HashMap<>());
         config.putAll(map);
 
-        Map consumerMap= (Map) yamlMapConfig.getObject("cpp.zk.kafka.consumer",new HashMap<>());
+        Map consumerMap= (Map) yamlMapConfig.getObject("cpp.kafka.consumer",new HashMap<>());
         config.putAll(consumerMap);
         return KafkaConsumerConfig.build(config);
     }
