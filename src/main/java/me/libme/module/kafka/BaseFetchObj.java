@@ -1,6 +1,6 @@
 package me.libme.module.kafka;
 
-public  class BaseFetchObj implements KafkaFetchObj {
+public class BaseFetchObj<T> implements KafkaFetchObj<T> {
 
 	private String id;
 	
@@ -13,7 +13,22 @@ public  class BaseFetchObj implements KafkaFetchObj {
 	private String hashKey;
 	
 	private Notify notify;
-	
+
+	private T value;
+
+	@Override
+	public T val() {
+		return value;
+	}
+
+	public void setValue(T value) {
+		this.value = value;
+	}
+
+	public T getValue() {
+		return value;
+	}
+
 	@Override
 	public long offset() {
 		return offset;

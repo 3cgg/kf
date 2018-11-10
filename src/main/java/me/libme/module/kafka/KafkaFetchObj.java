@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author J
  *
  */
-public interface KafkaFetchObj extends Serializable, KafkaHashKey, KafkaIn {
+public interface KafkaFetchObj<T> extends Serializable, KafkaHashKey, KafkaOffset {
 
 	/**
 	 * the record time , generally the record is create at the time.
@@ -20,6 +20,12 @@ public interface KafkaFetchObj extends Serializable, KafkaHashKey, KafkaIn {
 	 * @return
 	 */
 	public String id();
-	
+
+
+	/**
+	 * the record value
+	 * @return
+	 */
+	T val();
 	
 }

@@ -1,6 +1,6 @@
 package me.libme.module.kafka;
 
-public interface KafkaIn {
+public interface KafkaOffset {
 
 	/**
 	 * according to the offset in the kafka partition
