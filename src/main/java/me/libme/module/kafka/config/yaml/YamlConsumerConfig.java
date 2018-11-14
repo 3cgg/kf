@@ -2,7 +2,6 @@ package me.libme.module.kafka.config.yaml;
 
 import me.libme.kernel._c.yaml.YamlMapConfig;
 import me.libme.module.kafka.KafkaConsumerConfig;
-import me.libme.module.kafka.KafkaProducerConfig;
 import me.libme.module.kafka.config.KafkaConsumerConfigFinder;
 
 import java.io.InputStream;
@@ -24,7 +23,7 @@ public class YamlConsumerConfig implements KafkaConsumerConfigFinder {
 
     @Override
     public KafkaConsumerConfig find() {
-        Map<String,Object> config= KafkaProducerConfig.def();
+        Map<String,Object> config= KafkaConsumerConfig.def();
 
         Map map= (Map) yamlMapConfig.getObject("cpp.kafka.properties",new HashMap<>());
         config.putAll(map);
