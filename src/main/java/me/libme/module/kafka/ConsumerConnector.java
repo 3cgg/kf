@@ -112,8 +112,8 @@ public class ConsumerConnector implements Serializable {
 			Properties props = new Properties();
 			props.put("bootstrap.servers", kafkaConsumerConfig.getBootstrapServers());
 			props.put("group.id", kafkaConsumerConfig.getGroupId());
-			props.put("enable.auto.commit", "false");
-			props.put("auto.commit.interval.ms", "1000");
+			props.put("enable.auto.commit", kafkaConsumerConfig.getEnableAutoCommit());
+			props.put("auto.commit.interval.ms",kafkaConsumerConfig.getAutoCommitIntervalMs());
 			props.put("session.timeout.ms", kafkaConsumerConfig.getSessionTimeoutMs());
 			props.put("request.timeout.ms", kafkaConsumerConfig.getRequestTimeoutMs());
 			props.put("key.deserializer", kafkaConsumerConfig.getKeyDeserializer());
