@@ -69,7 +69,7 @@ public class ReadLogger2File {
                 ConsumerRecords<String, Object> consumerRecords = consumer.poll(3*1000);
                 for (ConsumerRecord<String, Object> consumerRecord : consumerRecords) {
                     String record =String.valueOf(consumerRecord.value());
-                    bufferedWriter.write(record+"\n");
+                    bufferedWriter.write(consumerRecord.offset()+","+record+"\n");
                 }
                 bufferedWriter.flush();
             }
