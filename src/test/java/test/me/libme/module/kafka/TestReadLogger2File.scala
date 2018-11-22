@@ -14,7 +14,7 @@ object TestReadLogger2File {
 
         val conf=KafkaConsumerConfig.`def`();
 
-        conf.put("bootstrap.servers","one.3cgg.rec:9092")
+        conf.put("bootstrap.servers","kafka.3cgg.rec:9092")
         conf.put("value.deserializer","org.apache.kafka.common.serialization.StringDeserializer")
 
         val kafkaConfig=KafkaConsumerConfig.build(conf)

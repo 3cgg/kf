@@ -13,7 +13,7 @@ object TestKafkaLoggerProducer {
 
     val conf=KafkaProducerConfig.`def`();
 
-    conf.put("bootstrap.servers","one.3cgg.rec:9092")
+    conf.put("bootstrap.servers","kafka.3cgg.rec:9092")
     conf.put("value.serializer","org.apache.kafka.common.serialization.StringSerializer")
 
     val kafkaConfig=KafkaProducerConfig.build(conf)
@@ -37,9 +37,12 @@ object TestKafkaLoggerProducer {
 
 
     while(true){
-      testLogger.logData()
 
-      Thread.sleep(3*1000)
+      for(i<-new Range(0,100,1)){
+        testLogger.logData()
+      }
+
+      Thread.sleep(10*1000)
     }
 
 
