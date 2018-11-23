@@ -27,5 +27,9 @@ public interface KafkaFetchObj<T> extends Serializable, KafkaHashKey, KafkaOffse
 	 * @return
 	 */
 	T val();
-	
+
+	String topic();
+
+	int partion();
+
 }

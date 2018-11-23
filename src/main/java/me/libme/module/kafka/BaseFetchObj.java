@@ -16,6 +16,36 @@ public class BaseFetchObj<T> implements KafkaFetchObj<T> {
 
 	private T value;
 
+	private String topic;
+
+	private int partion;
+
+	@Override
+	public String topic() {
+		return getTopic();
+	}
+
+	@Override
+	public int partion() {
+		return getPartion();
+	}
+
+	public String getTopic() {
+		return topic;
+	}
+
+	public void setTopic(String topic) {
+		this.topic = topic;
+	}
+
+	public int getPartion() {
+		return partion;
+	}
+
+	public void setPartion(int partion) {
+		this.partion = partion;
+	}
+
 	@Override
 	public T val() {
 		return value;
